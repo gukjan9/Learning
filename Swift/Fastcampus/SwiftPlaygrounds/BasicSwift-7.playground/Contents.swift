@@ -23,5 +23,4 @@ func printNickName(name: String?){
 
 printNickName(name: "GukJang")
 
-
 // nil or not
