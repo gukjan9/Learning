@@ -48,7 +48,7 @@ func printParsedInt2(from: String){
 }
 
 printParsedInt(from: "100")
-printParsedInt(from: "Hello")
+printParsedInt(from: "Hello")       // cannot
 
 
 // Nile coalescing > 박스를 까봤더니, 값이 없으면 디폴트 값을 주기
