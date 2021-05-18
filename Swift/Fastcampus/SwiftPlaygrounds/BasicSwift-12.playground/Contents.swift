@@ -26,3 +26,25 @@ operateTwoNum(a: 4, b: 2, operation: addClosure)
 operateTwoNum(a: 4, b: 2){ a, b in
     return a / b
 }
+
+// input 과 output 이 없는 Closure
+let voidClosure: () -> Void = {
+    print("iOS 개발자")
+}
+
+voidClosure()
+
+
+// Capuring Values
+var count = 0
+
+let incrementer = {
+    count += 1
+}
+
+incrementer()
+incrementer()
+incrementer()
+incrementer()
+
+count
