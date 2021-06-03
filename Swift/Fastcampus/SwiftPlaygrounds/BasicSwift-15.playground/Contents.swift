@@ -5,7 +5,14 @@ import UIKit
 // 2. 강의 Array와 강사 이름을 받아서, 해당 강사의 강의 이름을 출력하는 함수 만들기
 // 3. 강의 3개를 만들고 강사 이름으로 강의 찾기
 
-struct Lecture {
+
+// CustomStringConvertible
+
+struct Lecture: CustomStringConvertible {
+    var description: String {
+        return "Title: \(name), Instructor: \(instructor)"
+    }
+    
     let name: String
     let instructor : String
     let numOfStudent : Int
@@ -38,3 +45,5 @@ let lec3 = Lecture(name: "iOS Pro", instructor: "Jim", numOfStudent: 5)
 let lectures = [lec1, lec2, lec3]
 
 printLectureName(from: "Jason", lectures: lectures)
+
+print(lec1)     // Protocol Description
