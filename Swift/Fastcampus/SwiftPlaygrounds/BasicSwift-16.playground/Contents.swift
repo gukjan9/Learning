@@ -54,3 +54,12 @@ person.fullName = "Kim KyeongYoon"
 Person.isAlien
 
 person.isPopular
+
+
+// Property vs Method
+// Property : 호출시 (저장된)값을 하나 반환한다.
+// Method : 호출시 어떤 작업을 한다.
+
+// Setter 필요한가 yes - Computed Property
+//               no - 계산이 많이 필요한가? or DB access나 File io가 필요한가? yes - Method
+//                                                                    no - Computed Property
