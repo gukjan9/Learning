@@ -1,0 +1,38 @@
+import UIKit
+
+struct Person {
+    // Stored Property
+    var firstName: String
+    var lastName: String            // let 으로 바꾸면 밑에 에러, 실무에서는 let 사용 선호
+    
+    // Computed Property - Stored Property를 가지고 가공을 할 때
+    var fullName: String {
+        get {
+            return "\(firstName) \(lastName)"
+        }
+        set {
+            if let firstName = newValue.components(separatedBy: " ").first {
+                self.firstName = firstName
+            }
+            if let lastName = newValue.components(separatedBy: " ").last {
+                self.lastName = lastName
+            }
+        }
+        
+    }
+    // Type Property
+    static let isAlien: Bool = false
+}
+
+var person = Person(firstName: "GukJang", lastName: "Kim")
+
+person.firstName
+person.lastName
+
+person.firstName = "JangGuk"
+person.lastName = "Kim"
+
+person.fullName
+person.fullName = "Kim KyeongYoon"
+
+Person.isAlien
