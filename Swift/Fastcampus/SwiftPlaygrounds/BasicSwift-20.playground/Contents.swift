@@ -67,6 +67,14 @@ class Person{
 // 학생인데 운동선수
 class Student: Person{
     var grades: [Grade] = []
+    
+    override init(firstName: String, lastName: String){
+        super.init(firstName: firstName, lastName: lastName)
+    }
+    
+    convenience init(student: Student){
+        self.init(firstName: student.firstName, lastName: student.lastName)
+    }
 }
 
 class StudentAthlete: Student {
@@ -81,6 +89,10 @@ class StudentAthlete: Student {
         
         // Phase 2
         self.train()
+    }
+    
+    convenience init(name: String){
+        self.init(firstName: name, lastName: "", sports: [])
     }
     
     func train(){
@@ -98,4 +110,6 @@ class FootballPlayer: StudentAthlete{
 }
 
 let student1 = Student(firstName: "Jason", lastName: "Lee")
+let student1_1 = Student(student: student1)
 let student2 = StudentAthlete(firstName: "Jay", lastName: "Lee", sports: ["Football"])
+let student3 = StudentAthlete(name: "Mike")     // convenience initalizer
