@@ -19,7 +19,6 @@ class BountyViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     // UITableViewDataSource
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bountyList.count
     }
@@ -49,6 +48,7 @@ class BountyViewController: UIViewController, UITableViewDataSource, UITableView
     // UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         print("--> \(indexPath.row)")
+        performSegue(withIdentifier: "showDetail", sender: nil)
     }
     
     
