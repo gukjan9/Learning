@@ -14,47 +14,17 @@
             filePath = "BountyList/BountyViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "ListCell"
             landmarkType = "3">
             <Locations>
                <Location
-                  uuid = "28578FCA-B079-4A09-95CC-E60757814B57 - e81ecbcc2ca15709"
+                  uuid = "28578FCA-B079-4A09-95CC-E60757814B57 - cd21b16b9392c073"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "BountyList.BountyViewController.ListCell.imgView.getter : Swift.Optional&lt;__C.UIImageView&gt;"
-                  moduleName = "BountyList"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/gukjang/GukJang/Git/Learning/Swift/Fastcampus/Apps/BountyList/BountyList/BountyViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "57"
-                  endingLineNumber = "57"
-                  offsetFromSymbolStart = "100">
-               </Location>
-               <Location
-                  uuid = "28578FCA-B079-4A09-95CC-E60757814B57 - 4971647f525f631d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BountyList.BountyViewController.ListCell.imgView.setter : Swift.Optional&lt;__C.UIImageView&gt;"
-                  moduleName = "BountyList"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/gukjang/GukJang/Git/Learning/Swift/Fastcampus/Apps/BountyList/BountyList/BountyViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "57"
-                  endingLineNumber = "57"
-                  offsetFromSymbolStart = "144">
-               </Location>
-               <Location
-                  uuid = "28578FCA-B079-4A09-95CC-E60757814B57 - bb3977c5be6d33a7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BountyList.BountyViewController.ListCell.imgView.modify : Swift.Optional&lt;__C.UIImageView&gt;"
+                  symbolName = "BountyList.BountyViewController.ListCell.__allocating_init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; BountyList.BountyViewController.ListCell"
                   moduleName = "BountyList"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/gukjang/GukJang/Git/Learning/Swift/Fastcampus/Apps/BountyList/BountyList/BountyViewController.swift"
@@ -62,25 +32,10 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
                   endingLineNumber = "0"
-                  offsetFromSymbolStart = "48">
+                  offsetFromSymbolStart = "16">
                </Location>
                <Location
-                  uuid = "28578FCA-B079-4A09-95CC-E60757814B57 - 862365de4bffee4f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BountyList.BountyViewController.ListCell.imgView.modify : Swift.Optional&lt;__C.UIImageView&gt; with unmangled suffix &quot;.resume.0&quot;"
-                  moduleName = "BountyList"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/gukjang/GukJang/Git/Learning/Swift/Fastcampus/Apps/BountyList/BountyList/BountyViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "57"
-                  endingLineNumber = "57"
-                  offsetFromSymbolStart = "52">
-               </Location>
-               <Location
-                  uuid = "28578FCA-B079-4A09-95CC-E60757814B57 - e65e00e6e444d15c"
+                  uuid = "28578FCA-B079-4A09-95CC-E60757814B57 - e65e00e6e444d012"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -90,12 +45,27 @@
                   urlString = "file:///Users/gukjang/GukJang/Git/Learning/Swift/Fastcampus/Apps/BountyList/BountyList/BountyViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "57"
-                  endingLineNumber = "57"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
                   offsetFromSymbolStart = "100">
                </Location>
                <Location
-                  uuid = "28578FCA-B079-4A09-95CC-E60757814B57 - b49b734bc60482a2"
+                  uuid = "28578FCA-B079-4A09-95CC-E60757814B57 - 3491abadcd5b5a1e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BountyList.BountyViewController.ListCell.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;BountyList.BountyViewController.ListCell&gt;"
+                  moduleName = "BountyList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gukjang/GukJang/Git/Learning/Swift/Fastcampus/Apps/BountyList/BountyList/BountyViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "28578FCA-B079-4A09-95CC-E60757814B57 - b49b734bc60483ec"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -105,9 +75,24 @@
                   urlString = "file:///Users/gukjang/GukJang/Git/Learning/Swift/Fastcampus/Apps/BountyList/BountyList/BountyViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "57"
-                  endingLineNumber = "57"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
                   offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  uuid = "28578FCA-B079-4A09-95CC-E60757814B57 - 62b76555d5d93cf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BountyList.BountyViewController.ListCell.__deallocating_deinit"
+                  moduleName = "BountyList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gukjang/GukJang/Git/Learning/Swift/Fastcampus/Apps/BountyList/BountyList/BountyViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
                </Location>
             </Locations>
          </BreakpointContent>
