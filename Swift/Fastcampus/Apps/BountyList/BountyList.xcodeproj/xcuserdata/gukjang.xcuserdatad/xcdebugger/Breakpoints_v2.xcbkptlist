@@ -14,13 +14,13 @@
             filePath = "BountyList/BountyViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "ListCell"
             landmarkType = "3">
             <Locations>
                <Location
-                  uuid = "28578FCA-B079-4A09-95CC-E60757814B57 - e81ecbcc2ca15139"
+                  uuid = "28578FCA-B079-4A09-95CC-E60757814B57 - e81ecbcc2ca150f3"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -30,12 +30,12 @@
                   urlString = "file:///Users/gukjang/GukJang/Git/Learning/Swift/Fastcampus/Apps/BountyList/BountyList/BountyViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "105"
-                  endingLineNumber = "105"
+                  startingLineNumber = "111"
+                  endingLineNumber = "111"
                   offsetFromSymbolStart = "100">
                </Location>
                <Location
-                  uuid = "28578FCA-B079-4A09-95CC-E60757814B57 - 4971647f525f652d"
+                  uuid = "28578FCA-B079-4A09-95CC-E60757814B57 - 4971647f525f64e7"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -45,8 +45,8 @@
                   urlString = "file:///Users/gukjang/GukJang/Git/Learning/Swift/Fastcampus/Apps/BountyList/BountyList/BountyViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "105"
-                  endingLineNumber = "105"
+                  startingLineNumber = "111"
+                  endingLineNumber = "111"
                   offsetFromSymbolStart = "144">
                </Location>
                <Location
@@ -65,7 +65,7 @@
                   offsetFromSymbolStart = "48">
                </Location>
                <Location
-                  uuid = "28578FCA-B079-4A09-95CC-E60757814B57 - 862365de4bffe87f"
+                  uuid = "28578FCA-B079-4A09-95CC-E60757814B57 - 862365de4bffe9b5"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -75,12 +75,12 @@
                   urlString = "file:///Users/gukjang/GukJang/Git/Learning/Swift/Fastcampus/Apps/BountyList/BountyList/BountyViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "105"
-                  endingLineNumber = "105"
+                  startingLineNumber = "111"
+                  endingLineNumber = "111"
                   offsetFromSymbolStart = "52">
                </Location>
                <Location
-                  uuid = "28578FCA-B079-4A09-95CC-E60757814B57 - e65e00e6e444d76c"
+                  uuid = "28578FCA-B079-4A09-95CC-E60757814B57 - e65e00e6e444d6a6"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -90,12 +90,12 @@
                   urlString = "file:///Users/gukjang/GukJang/Git/Learning/Swift/Fastcampus/Apps/BountyList/BountyList/BountyViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "105"
-                  endingLineNumber = "105"
+                  startingLineNumber = "111"
+                  endingLineNumber = "111"
                   offsetFromSymbolStart = "100">
                </Location>
                <Location
-                  uuid = "28578FCA-B079-4A09-95CC-E60757814B57 - b49b734bc6048492"
+                  uuid = "28578FCA-B079-4A09-95CC-E60757814B57 - b49b734bc6048558"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -105,8 +105,8 @@
                   urlString = "file:///Users/gukjang/GukJang/Git/Learning/Swift/Fastcampus/Apps/BountyList/BountyList/BountyViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "105"
-                  endingLineNumber = "105"
+                  startingLineNumber = "111"
+                  endingLineNumber = "111"
                   offsetFromSymbolStart = "76">
                </Location>
             </Locations>

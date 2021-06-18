@@ -31,7 +31,9 @@ class DetailViewController: UIViewController {
 //    var name: String?
 //    var bounty: Int?
     
-    var bountyInfo: BountyInfo?
+//    var bountyInfo: BountyInfo?
+    
+    let viewModel = DetailViewModel()
     
     override func viewDidLoad() {           // 뜨기 직전
         super.viewDidLoad()
@@ -39,11 +41,17 @@ class DetailViewController: UIViewController {
     }
     
     func updateUI(){
-        if let bountyInfo = self.bountyInfo{
+        if let bountyInfo = viewModel.bountyInfo{
             imgView.image = bountyInfo.image
             nameLabel.text = bountyInfo.name
             bountyLabel.text = "\(bountyInfo.bounty)"
         }
+        
+//        if let bountyInfo = self.bountyInfo{
+//            imgView.image = bountyInfo.image
+//            nameLabel.text = bountyInfo.name
+//            bountyLabel.text = "\(bountyInfo.bounty)"
+//        }
         
 //        if let name = self.name, let bounty = self.bounty{
 //            let img = UIImage(named: "\(name).jpg")
@@ -56,5 +64,13 @@ class DetailViewController: UIViewController {
     
     @IBAction func close(_ sender: Any) {                   // 버튼을 control 누른 상태로 코드창에 끌고 오기
         dismiss(animated: true, completion: nil)            // 버튼 누르면 창 닫히기
+    }
+}
+
+class DetailViewModel {
+    var bountyInfo: BountyInfo?
+    
+    func update(model: BountyInfo?){
+        bountyInfo = model
     }
 }
