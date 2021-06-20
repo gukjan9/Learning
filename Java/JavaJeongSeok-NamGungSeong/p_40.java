@@ -11,6 +11,6 @@ public class p_40 {
         System.out.println("What I wrote : " + input);
         System.out.printf("num = %d%n", num);
 
-        scanner.close();
+        scanner.close();                        // close 를 꼭 해줘야한다
     }    
 }
