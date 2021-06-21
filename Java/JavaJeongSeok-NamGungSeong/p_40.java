@@ -11,6 +11,6 @@ public class p_40 {
         System.out.println("What I wrote : " + input);
         System.out.printf("num = %d%n", num);
 
-        scanner.close();                        // close 를 꼭 해줘야한다
+        scanner.close();                        // close - Scanner 선언했으면 꼭 닫아줘야한다.
     }    
 }
