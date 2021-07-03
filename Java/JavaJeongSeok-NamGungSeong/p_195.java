@@ -10,6 +10,6 @@ public class p_195 {
         System.arraycopy(abc, 0, result, 0, abc.length);
         System.arraycopy(num, 0, result, abc.length, num.length);
 
-        System.out.println(result);
+        System.out.println(result);             // AB01234
     }
 }
