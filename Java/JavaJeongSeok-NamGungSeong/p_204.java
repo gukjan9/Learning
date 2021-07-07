@@ -9,7 +9,7 @@ public class p_204 {
         }
         System.out.println();
 
-        for(int i = 0; i < numArr.length; i++){
+        for(int i = 0; i < numArr.length; i++){                 // 각 수의 개수 저장
             counter[numArr[i]]++;
         }
 
