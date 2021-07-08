@@ -7,6 +7,11 @@ public class p_220 {
             {40, 40},
             {50, 50, 50}
         };
-        
+        for(int i = 0; i < score.length; i++){
+            for(int j = 0; j < score[i].length; j++){
+                System.out.printf("%d ", score[i][j]);
+            }
+            System.out.println();
+        }
     }
 }
