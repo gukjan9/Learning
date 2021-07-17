@@ -2,7 +2,7 @@ public class p_362 {
     public static void main(String args[]){
         FireEngine fe = new FireEngine();
 
-        if(fe instanceof FireEngine){
+        if(fe instanceof FireEngine){           // true / false return
             System.out.println("FireEngine Instance");
         }
 
