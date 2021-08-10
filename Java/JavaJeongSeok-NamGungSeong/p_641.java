@@ -9,6 +9,6 @@ public class p_641 {
             set.add(num);
         }
 
-        System.out.println(set);
+        System.out.println(set);            // [자동 정렬]
     }
 }
