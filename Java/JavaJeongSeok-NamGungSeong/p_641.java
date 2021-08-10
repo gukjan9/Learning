@@ -9,6 +9,9 @@ public class p_641 {
             set.add(num);
         }
 
-        System.out.println(set);            // [자동 정렬돼서 출력]
+        System.out.println("Init : " + set);            // [자동 정렬돼서 출력]
+
+        System.out.println("Above 50 : " + set.headSet(new Integer(50)));
+        System.out.println("Below 50 : " + set.tailSet(new Integer(50)));
     }
 }
