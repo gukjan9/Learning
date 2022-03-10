@@ -1,0 +1,14 @@
+{
+  "name": "learning_express",
+  "version": "0.0.1",
+  "main" : "app.js",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
+    "express": "^4.17.3"
+  }
+}
