@@ -1,11 +1,13 @@
 {
   "name": "learning_express",
   "version": "0.0.1",
-  "main" : "app.js",
+  "main": "app.js",
   "scripts": {
     "start": "nodemon app"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.15"
   },
   "devDependencies": {

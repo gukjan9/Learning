@@ -1,11 +1,24 @@
 // const { application } = require('express');
 const express = require('express');
 const path = require('path');
+const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
 // 서버에 속성을 심음
 app.set('port', 3000);
+
+app.use(morgan('dev'));     // 개발시 - dev / 배포, 실무시 - combined (정보가 더 많음)
+app.use(cookieParser());
+
+// Body-parser require 대신
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Express 에는 없는 body-parser 기능
+// app.use(bodyParser.raw());
+// app.use(bodyParser.text());
 
 // 포트 변경 가능
 // app.set('port', process.env.PORT || 3000);
@@ -16,19 +29,30 @@ app.set('port', 3000);
 app.use((req, res, next) => {
     console.log('모든 요청에 실행하고 싶어요.');
     next();
-}, (req, res, next) => {
-    // throw new Error('에러가 났어요.');      // 이렇게 하면 서버로그에 떠야할 에러메세지가 웹페이지에 나타나게됨
-    try{
-        console.log('error');
-    } catch(error){
-        next(error);        // next 에 에러 넣으면 에러 처리 미들웨어로 이동
-    }
+// }, (req, res, next) => {
+//     // throw new Error('에러가 났어요.');      // 이렇게 하면 서버로그에 떠야할 에러메세지가 웹페이지에 나타나게됨
+//     try{
+//         console.log('error');
+//     } catch(error){
+//         next(error);        // next 에 에러 넣으면 에러 처리 미들웨어로 이동
+//     }
 });
 
 // next
 // next('route') -> 다음 라우터로 이동
 
-app.get('/', (req, res) => {
+app.get('/', (req, res, next) => {
+    req.cookies     // {mycookie: 'test'}
+    req.signedCookies;      // 암호화/서명
+    res.cookie('name', encodeURIComponent(name), {
+        expires: new Date(),
+        httpOnly: true,
+        path: '/',
+    });
+    res.clearCookie('name', encodeURIComponent(name), {
+        httpOnly: true,
+        path: '/',
+    });
     res.sendFile(path.join(__dirname, 'index.html'));       // 위에 path 에서 경로 지정
 });
 
