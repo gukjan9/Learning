@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app"
+    "start": "nodemon app.js"
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",
