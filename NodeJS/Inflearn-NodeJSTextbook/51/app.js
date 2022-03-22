@@ -1,12 +1,14 @@
+// dotenv 최대한 위로 올려주기
+const dotenv = require('dotenv');   // dotenv 불러오기
+dotenv.config();
+
 const express = require('express');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const dotenv = require('dotenv');
 const path = require('path');
-
-dotenv.config();
 const app = express();
+
 app.set('port', process.env.PORT || 3000);
 
 app.use(morgan('dev'));
@@ -17,7 +19,7 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(session({
   resave: false,
   saveUninitialized: false,
-  secret: process.env.COOKIE_SECRET,
+  secret: process.env.COOKIE_SECRET,      // dotenv
   cookie: {
     httpOnly: true,
     secure: false,
@@ -40,7 +42,7 @@ const upload = multer({
       done(null, 'uploads/');
     },
     filename(req, file, done) {
-      const ext = path.extname(file.originalname);
+      const ext = path.extname(file.originalname);    // 확장자 추출
       done(null, path.basename(file.originalname, ext) + Date.now() + ext);
     },
   }),
