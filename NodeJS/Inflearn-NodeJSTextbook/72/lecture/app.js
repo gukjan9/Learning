@@ -43,6 +43,7 @@ app.use(session({
     secure: false,
   },
 }));
+// 세션보다 아래에 위치해야함
 app.use(passport.initialize());
 app.use(passport.session());
 

@@ -27,7 +27,7 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
 });
 
 router.post('/login', isNotLoggedIn, (req, res, next) => {
-  passport.authenticate('local', (authError, user, info) => {
+  passport.authenticate('local', (authError, user, info) => {   // localStrategy 로 이동
     if (authError) {
       console.error(authError);
       return next(authError);
@@ -40,9 +40,9 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
         console.error(loginError);
         return next(loginError);
       }
-      return res.redirect('/');
+      return res.redirect('/');     // 홈으로 리턴
     });
-  })(req, res, next); // 미들웨어 내의 미들웨어에는 (req, res, next)를 붙입니다.
+  })(req, res, next); // 미들웨어 내의 미들웨어에는 (req, res, next)를 붙입니다. 미들웨어를 확장하는 패턴
 });
 
 router.get('/logout', isLoggedIn, (req, res) => {

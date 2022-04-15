@@ -5,7 +5,7 @@ module.exports = class User extends Sequelize.Model {
     return super.init({
       email: {
         type: Sequelize.STRING(40),
-        allowNull: true,
+        allowNull: true,      // kakao 로 로그인시 이메일 없음
         unique: true,
       },
       nick: {
