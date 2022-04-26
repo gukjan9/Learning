@@ -6,7 +6,7 @@ const User = require('../models/user');
 
 const router = express.Router();
 
-router.post('/join', isNotLoggedIn, async (req, res, next) => {
+router.post('/join', isNotLoggedIn, async (req, res, next) => {   // 로그인한 사람은 회원가입 못 넘어가게
   const { email, nick, password } = req.body;
   try {
     const exUser = await User.findOne({ where: { email } });

@@ -1,3 +1,5 @@
+// middleware 는 req, res, next
+
 exports.isLoggedIn = (req, res, next) => {
     if (req.isAuthenticated()) {
       next();

@@ -21,7 +21,7 @@ module.exports = () => {
         as: 'Followings',
       }],
     })
-      .then(user => done(null, user))
+      .then(user => done(null, user))   // req.user, req.isAuthenticated()
       .catch(err => done(err));
   });
 
