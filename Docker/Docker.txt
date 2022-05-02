@@ -1,0 +1,31 @@
+<Docker>
+docker images : 도커 엔진이 존재하는 이미지의 목록 출력
+
+docker create -i -t --name myubuntu ubuntu:14.04
+-i -t : 컨테이너와 상호 (interactive) 입출력 가능하게 함
+--name : 컨테이너 이름 설정
+
+docker run
+-d : Detached 모드, 컨테이너를 백그라운드에서 동작하는 애플리케이션으로써 실행하도록  설정
+docker create -> docker start myubuntu -> docker attach myubuntu
+
+exit : 컨테이너 내부에서 빠져나오면서 동시에 컨테이너를 정지시킴
+Ctrl + P, Q : 컨테이너를 정지시키지 않고 컨테이너에서 빠져나옴
+
+docker ps : 정지되지 않은 컨테이너만 출력
+docker ps -a : 모든 컨테이너 출력
+docker ps -q : 컨테이너의 ID 출력
+
+docker rm myubuntu : 정지된 컨테이너 삭제 (docker stop myubuntu 한 뒤)
+docker rm -f myubuntu
+docker container prune
+docker stop $(docker ps -a -q) : 컨테이너 실행 상태와 상관 없이 모든 컨테이너 정지, 삭제
+docker rm $(docker ps -a -q)
+
+docker -p 80:80 : 컨테이너의 포트를 호스트의 포트와 바인딩해 연결할 수 있게 설정
+(호스트의 특정 IP:포트번호) 가능
+
+docker port myubuntu : 호스트와 바인딩된 포트만 확인
+
+brctl : docker() 브리지에 veth 이 실제로 바인딩 됐는지 확인
+
