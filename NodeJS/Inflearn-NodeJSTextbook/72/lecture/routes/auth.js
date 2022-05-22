@@ -27,6 +27,7 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {   // 로그인�
 });
 
 router.post('/login', isNotLoggedIn, (req, res, next) => {
+  // req.user; - 로그인 전이라 사용자 정보 안 들어있음
   passport.authenticate('local', (authError, user, info) => {   // localStrategy 로 이동
     if (authError) {
       console.error(authError);
@@ -46,6 +47,7 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
 });
 
 router.get('/logout', isLoggedIn, (req, res) => {
+  // req.user; - 사용자 정보 들어있음
   req.logout();
   req.session.destroy();
   res.redirect('/');
