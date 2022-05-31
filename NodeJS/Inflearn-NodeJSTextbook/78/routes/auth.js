@@ -26,6 +26,7 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
   }
 });
 
+// 서버 재시작되면 로그인 풀림
 router.post('/login', isNotLoggedIn, (req, res, next) => {
   passport.authenticate('local', (authError, user, info) => {
     if (authError) {

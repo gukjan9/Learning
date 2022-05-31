@@ -4,6 +4,7 @@ const { Post, User, Hashtag } = require('../models');
 
 const router = express.Router();
 
+// 같은 변수를 모든 라우터에 다 넣을시 중복 처리 (미들웨어의 특성)
 router.use((req, res, next) => {
   res.locals.user = req.user;
   res.locals.followerCount = req.user ? req.user.Followers.length : 0;
@@ -32,6 +33,7 @@ router.get('/', async (req, res, next) => {
     res.render('main', {
       title: 'NodeBird',
       twits: posts,
+      // user: req.user,
     });
   } catch (err) {
     console.error(err);

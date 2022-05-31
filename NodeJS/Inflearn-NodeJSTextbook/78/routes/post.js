@@ -1,5 +1,5 @@
 const express = require('express');
-const multer = require('multer');
+const multer = require('multer');   // img multer 가 해석 가능
 const path = require('path');
 const fs = require('fs');
 
@@ -8,6 +8,7 @@ const { isLoggedIn } = require('./middlewares');
 
 const router = express.Router();
 
+// uploads 폴더 만들어주기
 try {
   fs.readdirSync('uploads');
 } catch (error) {
@@ -22,17 +23,20 @@ const upload = multer({
     },
     filename(req, file, cb) {
       const ext = path.extname(file.originalname);
-      cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
+      cb(null, path.basename(file.originalname, ext) + Date.now() + ext);   // 파일명이 같을 때, 덮어씌워지는걸 막기 위함
     },
   }),
-  limits: { fileSize: 5 * 1024 * 1024 },
+  limits: { fileSize: 5 * 1024 * 1024 },    // 5mb
 });
 
+// 이미지 따로
 router.post('/img', isLoggedIn, upload.single('img'), (req, res) => {
   console.log(req.file);
   res.json({ url: `/img/${req.file.filename}` });
 });
 
+// 게시글 따로
+// 이미지 먼저 올리고 게시글 쓸 동안 이미지 전송
 const upload2 = multer();
 router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
   try {
