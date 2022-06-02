@@ -47,10 +47,10 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {
       UserId: req.user.id,
     });
     const hashtags = req.body.content.match(/#[^\s#]*/g);
-    if (hashtags) {
+    if (hashtags) {     // 값이 없으면 null
       const result = await Promise.all(
         hashtags.map(tag => {
-          return Hashtag.findOrCreate({
+          return Hashtag.findOrCreate({     // 중복저장 x
             where: { title: tag.slice(1).toLowerCase() },
           })
         }),
