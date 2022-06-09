@@ -6,7 +6,7 @@ const morgan = require('morgan');
 const session = require('express-session');
 const nunjucks = require('nunjucks');
 const dotenv = require('dotenv');
-const cors = require('cors');
+// const cors = require('cors');
 // cors 는 브라우저에서 서버로 보낼 때 발생하는 에러, 해결은 서버에서 해줘야함
 
 dotenv.config();
@@ -51,10 +51,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // app.use(cors());
-app.use(cors({
-  origin: true,   // 여러개 원하면 [] 로 묶기
-  credenrials: true,
-}));
+// app.use(cors({
+//   origin: true,
+//   credenrials: true,
+// }));
 app.use('/v1', v1);
 app.use('/v2', v2);
 app.use('/auth', authRouter);

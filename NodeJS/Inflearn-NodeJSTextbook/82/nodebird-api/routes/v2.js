@@ -2,11 +2,16 @@
 
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const cors = require('cors');
 
 const { verifyToken, apiLimiter } = require('./middlewares');
 const { Domain, User, Post, Hashtag } = require('../models');
 
 const router = express.Router();
+router.use(cors({
+  origin: true,
+  credentials: true,
+}));
 
 router.post('/token', apiLimiter, async (req, res) => {
   const { clientSecret } = req.body;
