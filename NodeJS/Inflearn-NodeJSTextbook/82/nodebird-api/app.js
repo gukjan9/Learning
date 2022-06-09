@@ -6,6 +6,8 @@ const morgan = require('morgan');
 const session = require('express-session');
 const nunjucks = require('nunjucks');
 const dotenv = require('dotenv');
+const cors = require('cors');
+// cors 는 브라우저에서 서버로 보낼 때 발생하는 에러, 해결은 서버에서 해줘야함
 
 dotenv.config();
 const v1 = require('./routes/v1');
@@ -48,10 +50,16 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// app.use(cors());
+app.use(cors({
+  origin: true,   // 여러개 원하면 [] 로 묶기
+  credenrials: true,
+}));
 app.use('/v1', v1);
 app.use('/v2', v2);
 app.use('/auth', authRouter);
 app.use('/', indexRouter);
+// app.use('/auth', cors(), authRouter); - 해당 모듈에서만 사용 가능
 
 app.use((req, res, next) => {
   const error =  new Error(`${req.method} ${req.url} 라우터가 없습니다.`);

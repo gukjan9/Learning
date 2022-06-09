@@ -32,6 +32,11 @@ router.post('/token', apiLimiter, async (req, res) => {
       expiresIn: '1m', // 1분
       issuer: 'nodebird',
     });
+    
+    // 직접 코드 대신 cors 모듈 사용
+    // res.setHeader('Access-Control-Aloow-Origin', 'localhost:4000');     // * 넣으면 모두 허용
+    // res.setHeader('Access-Control-Aloow-Credentials', 'true');
+
     // nodecat 으로 토큰 값 전송
     return res.json({
       code: 200,
