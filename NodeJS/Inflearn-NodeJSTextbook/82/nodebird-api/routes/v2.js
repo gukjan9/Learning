@@ -2,16 +2,29 @@
 
 const express = require('express');
 const jwt = require('jsonwebtoken');
+// 라우터 단위로
 const cors = require('cors');
+const url = require('url');
 
 const { verifyToken, apiLimiter } = require('./middlewares');
 const { Domain, User, Post, Hashtag } = require('../models');
+const { urlencoded } = require('express');
 
 const router = express.Router();
-router.use(cors({
-  origin: true,
-  credentials: true,
-}));
+// 미들웨어 확장 방식
+router.use(async (req, res, next) => {
+  const domain = await Domain.findOne({
+    where: { host: urlencoded.parse(req.get('origin'))?.host}
+  });
+  if(domain) {
+    cors({
+      origin: true,
+      credentials: true,
+    })(req, res, next);
+  } else {
+    next();
+  }
+});
 
 router.post('/token', apiLimiter, async (req, res) => {
   const { clientSecret } = req.body;
