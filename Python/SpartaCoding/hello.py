@@ -32,3 +32,52 @@ people = [
     {'name': 'john', 'age': 34, 'score':{'math':75,'science':100}}
 ]
 print(people[2]['score']['science'])
+
+people = [
+    {'name': 'bob', 'age': 20},
+    {'name': 'carry', 'age': 38},
+    {'name': 'john', 'age': 7},
+    {'name': 'smith', 'age': 17},
+    {'name': 'ben', 'age': 27},
+    {'name': 'bobby', 'age': 57},
+    {'name': 'red', 'age': 32},
+    {'name': 'queen', 'age': 25}
+]
+for person in people :
+    name = person['name']
+    age = person['age']
+    if age > 20:
+        print(name, age)
+
+for i, person in enumerate(people):
+    name = person['name']
+    age = person['age']
+    print(i, name, age)
+    if i > 2:
+        break
+
+# 짝수만 출력
+num_list = [1, 2, 3, 6, 3, 2, 4, 5, 6, 2, 4]
+for num in num_list:
+    if num%2 == 0:
+        print(num)
+
+# 짝수가 몇 개인지
+count = 0
+for num in num_list:
+    if num % 2 == 0:
+        count += 1
+    print(count)
+
+# 모든 요소 합
+total = 0
+for num in num_list:
+    total += num
+print(total)
+
+# 자연수 중 가장 큰 수
+result = 0
+for num in num_list:
+    if num > result:
+        result = num
+print(result)
