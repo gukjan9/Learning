@@ -95,3 +95,46 @@ check_gender('150101-1012345')
 check_gender('150101-2012345')
 check_gender('150101-4012345')
 check_gender('150101-6012345')
+
+# tuple, set
+student_a = ['물리2','국어','수학1','음악','화학1','화학2','체육']
+student_b = ['물리1','수학1','미술','화학2','체육']
+
+a_set = set(student_a)
+b_set = set(student_b)
+print(a_set - b_set)
+
+# f-string
+scores = [
+    {'name':'영수','score':70},
+    {'name':'영희','score':65},
+    {'name':'기찬','score':75},
+    {'name':'희수','score':23},
+    {'name':'서경','score':99},
+    {'name':'미주','score':100},
+    {'name':'병태','score':32}
+]
+
+for s in scores :
+    name = s['name']
+    score = str(s['score'])
+    print(f'{name}의 점수는 {score}점 입니다')
+
+# 예외 처리
+people = [
+    {'name': 'bob', 'age': 20},
+    {'name': 'carry', 'age': 38},
+    {'name': 'john', 'age': 7},
+    {'name': 'smith', 'age': 17},
+    {'name': 'ben', 'age': 27},
+    {'name': 'bobby'},
+    {'name': 'red', 'age': 32},
+    {'name': 'queen', 'age': 25}
+]
+
+for person in people:
+    try:
+        if person['age'] > 20:
+            print(person['name'])
+    except:
+        print(person['name'], 'Error')
