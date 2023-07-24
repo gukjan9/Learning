@@ -81,3 +81,17 @@ for num in num_list:
     if num > result:
         result = num
 print(result)
+
+# 성별 구분
+def check_gender(pin):
+    gender = int(pin.split('-')[1][:1])
+    if(gender == 1 or gender == 3):
+        print('Male')
+    elif(gender == 2 or gender == 4):
+        print('Female')
+    else:
+        print('Not Human')
+check_gender('150101-1012345')
+check_gender('150101-2012345')
+check_gender('150101-4012345')
+check_gender('150101-6012345')
