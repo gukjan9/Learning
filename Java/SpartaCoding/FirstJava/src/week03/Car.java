@@ -27,5 +27,9 @@ public class Car {  // public - 접근 제어자
         return speed;
     }
 
+    char changeGear(char type){
+        gear = type;
+        return gear;
+    }
 
 }
