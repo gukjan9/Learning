@@ -19,6 +19,7 @@ public class RestTemplateController {
         this.restTemplateService = restTemplateService;
     }
 
+    // request param annotation 생략 가능
     @GetMapping("/get-call-obj")
     public ItemDto getCallObject(String query) {
         return restTemplateService.getCallObject(query);
