@@ -18,7 +18,8 @@ public class User {
     private String name;
 
     // 영속성 전이
-    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    // 고아 entity 삭제
+    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<Food> foodList = new ArrayList<>();
 
     public void addFoodList(Food food) {
