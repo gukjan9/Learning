@@ -18,7 +18,7 @@ public class Food {
     private String name;
     private double price;
 
-    // 외래키의 주인이 order 테이블이 된다.
-    @OneToMany(mappedBy = "food")
-    private List<Order> orderList = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 }
