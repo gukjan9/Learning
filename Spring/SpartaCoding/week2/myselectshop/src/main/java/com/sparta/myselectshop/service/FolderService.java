@@ -22,12 +22,19 @@ public class FolderService {
                 Folder folder = new Folder(folderName, user);
                 folderList.add(folder);
             }
+            else{
+                throw new IllegalArgumentException("폴더 명이 중복되었습니다.");
+            }
         }
+        folderRepository.saveAll(folderList);
     }
 
     private boolean isExistFolderName(String folderName, List<Folder> existFolderList) {
         for (Folder existFolder : existFolderList) {
-            if(foldername.)
+            if(folderName.equals(existFolder.getName())){
+                return true;
+            }
         }
+        return false;
     }
 }
