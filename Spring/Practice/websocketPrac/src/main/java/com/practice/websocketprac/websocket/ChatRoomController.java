@@ -12,6 +12,7 @@ import java.util.List;
 @RequestMapping("/chat")
 public class ChatRoomController {
     private final ChatRoomRepository chatRoomRepository;
+
     // 채팅 리스트 화면
     @GetMapping("/room")
     public String rooms(Model model) {
