@@ -1,7 +1,9 @@
 package com.fastcampus.boardserver.service;
 
+import com.fastcampus.boardserver.dto.UserDTO;
+
 public interface UserService {
-    void refister(UserDTO userProfile);
+    void register(UserDTO userProfile);
 
     UserDTO login(String id, String password);
 
