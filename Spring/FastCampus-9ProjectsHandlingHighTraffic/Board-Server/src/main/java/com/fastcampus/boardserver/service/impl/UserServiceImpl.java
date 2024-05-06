@@ -31,14 +31,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public void register(UserDTO userDTO) {
         boolean duplIdResult = isDuplicatedId(userDTO.getUserId());
-        if(duplIdResult){
-            throw new DuplicateIdException("중복된 아이디 입니다.");
+        if (duplIdResult) {
+            throw new DuplicateIdException("중복된 아이디입니다.");
         }
         userDTO.setCreateTime(new Date());
-        userDTO.setPassword(encryptSHA256(userDTO.getPassword()));
+        userDTO.setPassword(SHA256Util.encryptSHA256(userDTO.getPassword()));
         int insertCount = userProfileMapper.register(userDTO);
 
-        if(insertCount != 1){
+        if (insertCount != 1) {
             log.error("insertMember ERROR! {}", userDTO);
             throw new RuntimeException(
                     "insertUser ERROR! 회원가입 메서드를 확인해주세요\n" + "Params : " + userDTO);

@@ -13,7 +13,7 @@ public class UserDTO {
     public enum Status{
         DEFAULT, ADMIN, DELETED
     }
-    private Integer id;
+    private int id;
     private String userId;
     private String password;
     private String nickName;
@@ -36,7 +36,8 @@ public class UserDTO {
         this.isAdmin = isAdmin;
     }
 
-    public static boolean hasNullDataBeforeRegister(UserDTO userDTO){
-        return userDTO.getUserId() == null || userDTO.getPassword() == null || userDTO.getNickName() == null;
+    public static boolean hasNullDataBeforeSignup(UserDTO userDTO) {
+        return userDTO.getUserId() == null || userDTO.getPassword() == null
+                || userDTO.getNickName() == null;
     }
 }

@@ -30,9 +30,9 @@ public class UserController {
 
     @PostMapping("sign-up")
     @ResponseStatus(HttpStatus.CREATED)
-    public void signUp(@RequestBody UserDTO userDTO){
-        if(UserDTO.hasNullDataBeforeRegister(userDTO)){
-            throw new RuntimeException("회원가입 정보를 확인해주세요");
+    public void signUp(@RequestBody UserDTO userDTO) {
+        if (UserDTO.hasNullDataBeforeSignup(userDTO)) {
+            throw new NullPointerException("회원가입시 필수 데이터를 모두 입력해야 합니다.");
         }
         userService.register(userDTO);
     }
