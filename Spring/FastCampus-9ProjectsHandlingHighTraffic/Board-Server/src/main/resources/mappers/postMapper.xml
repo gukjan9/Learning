@@ -10,8 +10,17 @@
     </insert>
 
     <select id="selectMyPosts" resultType="com.fastcampus.boardserver.dto.PostDTO">
-        SELECT 'id', 'name', 'isAdmin', 'contents', 'createTime', 'views', 'categoryId', 'userId', 'fileId', 'updateTime'
-        FROM 'post'
+        SELECT `id`,
+               `name`,
+               `isAdmin`,
+               `contents`,
+               `createTime`,
+               `views`,
+               `categoryId`,
+               `userId`,
+               `fileId`,
+               `updateTime`
+        FROM `post`
         WHERE userId = #{userId}
     </select>
 
