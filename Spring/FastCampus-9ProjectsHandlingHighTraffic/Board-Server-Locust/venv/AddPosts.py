@@ -5,8 +5,8 @@ class AddPosts(HttpUser):
     waite_time = between(1, 2)  # 잠시 여유를 줌
 
     def on_start(self):
-        self.client.post("/users/sign-in", json = {"userId": "topojs9",
-                                                   "password": "123"})
+        self.client.post("/users/sign-in", json = {"userId": "test2",
+                                                   "password": "1234"})
 
     @task
     def add_post(self):
