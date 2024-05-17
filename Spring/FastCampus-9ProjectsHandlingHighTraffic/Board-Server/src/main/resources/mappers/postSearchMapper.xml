@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.fastcampus.boardserver.mapper.CategoryMapper">
+<mapper namespace="com.fastcampus.boardserver.mapper.PostSearchMapper">
     <select id="selectPosts" resultType="com.fastcampus.boardserver.dto.request.PostSearchRequest">
         SELECT `id`,
                `name`,
@@ -37,4 +37,20 @@
         </if>
     </select>
 
+    <select id="getPostByTag" resultType="com.fastcampus.boardserver.dto.request.PostSearchRequest">
+        SELECT `p.id`,
+               `p.name`,
+               `p.isAdmin`,
+               `p.contents`,
+               `p.createTime`,
+               `p.views`,
+               `p.categoryId`,
+               `p.userId`,
+               `p.fileId`,
+               `p.updateTime`
+        FROM `post p`
+                JOIN postTag pt ON p.id = pt.postId
+                JOIN tag t ON pt.tagId = t.id
+        WHERE t.name = #{tagName}
+    </select>
 </mapper>
