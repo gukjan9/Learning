@@ -59,8 +59,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updatePassword(String id, String beforePassword, String afterPassword) {
-        String crytoPassword = encryptSHA256(beforePassword);
-        UserDTO memberInfo = userProfileMapper.findByIdAndPassword(id, crytoPassword);
+        String cryptoPassword = encryptSHA256(beforePassword);
+        UserDTO memberInfo = userProfileMapper.findByIdAndPassword(id, cryptoPassword);
 
         if(memberInfo != null){
             memberInfo.setPassword(encryptSHA256(afterPassword));
