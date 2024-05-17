@@ -3,6 +3,7 @@ package com.fastcampus.boardserver.controller;
 import com.fastcampus.boardserver.aop.LoginCheck;
 import com.fastcampus.boardserver.dto.CommentDTO;
 import com.fastcampus.boardserver.dto.PostDTO;
+import com.fastcampus.boardserver.dto.TagDTO;
 import com.fastcampus.boardserver.dto.UserDTO;
 import com.fastcampus.boardserver.dto.response.CommonResponse;
 import com.fastcampus.boardserver.service.impl.PostServiceImpl;
