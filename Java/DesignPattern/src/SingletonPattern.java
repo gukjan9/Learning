@@ -1,4 +1,4 @@
-class SingletonInstance {
+class Singleton {
     private static class singleInstanceHolder{
         private static final Singleton INSTANCE = new Singleton();
     }
@@ -7,10 +7,10 @@ class SingletonInstance {
     }
 }
 
-public class Singleton {
+public class SingletonPattern {
     public static void main(String[] args){
-        Singleton a = SingletonInstance.getInstance();
-        Singleton b = SingletonInstance.getInstance();
+        Singleton a = Singleton.getInstance();
+        Singleton b = Singleton.getInstance();
         System.out.println(a.hashCode());
         System.out.println(b.hashCode());
         if (a == b){
