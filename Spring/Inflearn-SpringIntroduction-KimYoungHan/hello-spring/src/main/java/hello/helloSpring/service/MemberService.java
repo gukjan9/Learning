@@ -9,14 +9,23 @@ import java.util.Optional;
 
 public class MemberService {
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    // private final MemberRepository memberRepository = new MemoryMemberRepository();
+
+    // 테스트 케이스에서 new MemoryMemberRepository(); 로 생성시 서로 다른 db 를 바라보는 것 방지하기 위해
+    // new 가 아닌 constructor 로 설정
+    private final MemberRepository memberRepository;
+
+    // DI (Dependency Injection)
+    public MemberService(MemberRepository memberRepository){
+        this.memberRepository = memberRepository;
+    }
 
     public long join(Member member){
         // 같은 이름인 중복 회원 x
         // 아래처럼 코드가 길 때는 메서드로 추출
         validateDuplicateMember(member);
         memberRepository.save(member);
-        
+
         return member.getId();
     }
 
