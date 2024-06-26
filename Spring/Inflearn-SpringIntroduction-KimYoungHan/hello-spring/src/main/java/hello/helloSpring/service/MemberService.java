@@ -3,10 +3,15 @@ package hello.helloSpring.service;
 import hello.helloSpring.domain.Member;
 import hello.helloSpring.repository.MemberRepository;
 import hello.helloSpring.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+// component 스캔 방식과 자동 의존 관계 설정
+// @Component 라고만 해도 된다
+@Service
 public class MemberService {
 
     // private final MemberRepository memberRepository = new MemoryMemberRepository();
@@ -16,6 +21,7 @@ public class MemberService {
     private final MemberRepository memberRepository;
 
     // DI (Dependency Injection)
+    @Autowired
     public MemberService(MemberRepository memberRepository){
         this.memberRepository = memberRepository;
     }
