@@ -11,7 +11,7 @@ import java.util.Optional;
 
 // component 스캔 방식과 자동 의존 관계 설정
 // @Component 라고만 해도 된다
-@Service
+// @Service
 public class MemberService {
 
     // private final MemberRepository memberRepository = new MemoryMemberRepository();
