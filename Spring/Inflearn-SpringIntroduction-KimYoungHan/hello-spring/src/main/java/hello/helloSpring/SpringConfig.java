@@ -1,13 +1,24 @@
 package hello.helloSpring;
 
+import hello.helloSpring.repository.JdbcMemberRepository;
 import hello.helloSpring.repository.MemberRepository;
 import hello.helloSpring.repository.MemoryMemberRepository;
 import hello.helloSpring.service.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.sql.DataSource;
+
 @Configuration
 public class SpringConfig {
+
+    private DataSource dataSource;
+
+    @Autowired
+    public SpringConfig(DataSource dataSource){
+        this.dataSource = dataSource;
+    }
 
     @Bean
     public MemberService memberService(){
@@ -16,7 +27,8 @@ public class SpringConfig {
 
     @Bean
     public MemberRepository memberRepository(){
-        return new MemoryMemberRepository();
+        // return new MemoryMemberRepository();
+        return new JdbcMemberRepository(dataSource);
 
         // 컴포넌트 스캔 말고 직접 스프링 빈을 주입하면 좋은 점
         // db를 바꿀 때 다른 코드 수정 없이
