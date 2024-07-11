@@ -10,7 +10,7 @@ function App() {
         <Header />
         <Routes>
           <Route exact path = "/" element={ <DayList /> }></Route>
-          <Route path = "/day" element={ <Day /> }></Route>
+          <Route path = "/day/:day" element={ <Day /> }></Route>
         </Routes>
       </div>
     </BrowserRouter>
