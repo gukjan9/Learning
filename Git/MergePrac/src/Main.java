@@ -6,5 +6,6 @@ public class Main {
         System.out.println("git merge");
 
         System.out.println("b1 working");
+        System.out.println("b1 still working");
     }
 }
