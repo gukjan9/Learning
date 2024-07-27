@@ -4,5 +4,7 @@ public class Main {
         System.out.println("b1 checkout");
         System.out.println("b1 merge");
         System.out.println("git merge");
+
+        System.out.println("rebase");
     }
 }
