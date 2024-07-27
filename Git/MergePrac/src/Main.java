@@ -6,5 +6,6 @@ public class Main {
         System.out.println("git merge");
 
         System.out.println("rebase");
+        System.out.println("main");
     }
 }
