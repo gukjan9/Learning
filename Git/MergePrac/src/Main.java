@@ -7,5 +7,6 @@ public class Main {
 
         System.out.println("main working");
         System.out.println("main still working");
+        System.out.println("main is main");
     }
 }
