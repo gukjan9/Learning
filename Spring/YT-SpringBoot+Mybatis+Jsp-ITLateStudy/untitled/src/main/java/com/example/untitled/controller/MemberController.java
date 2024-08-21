@@ -10,11 +10,11 @@ public class MemberController {
 
     @GetMapping("/login")
     public String goLogin(){
-        return "/WEB-INF/views/login.jsp";
+        return "/login";
     }
 
     @GetMapping("/signup")
     public String goSignup(){
-        return "/WEB-INF/views/signup.jsp";
+        return "/signup";
     }
 }

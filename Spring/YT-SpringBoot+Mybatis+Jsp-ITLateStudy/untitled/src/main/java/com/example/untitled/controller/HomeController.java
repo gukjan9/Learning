@@ -8,22 +8,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/home")
 public class HomeController {
 
+    @GetMapping("")
     public String goHome(){
-        return "/WEB-INF/views/home.jsp";
+        return "/home";
     }
 
     @GetMapping("/study")
     public String goStudy(){
-        return "/WEB-INF/views/study.jsp";
+        return "/study";
     }
 
     @GetMapping("/memberList")
     public String goMember(){
-        return "/WEB-INF/views/member.jsp";
+        return "/member";
     }
 
     @GetMapping("/about")
     public String goAbout(){
-        return "/WEB-INF/views/about.jsp";
+        return "/about";
     }
 }

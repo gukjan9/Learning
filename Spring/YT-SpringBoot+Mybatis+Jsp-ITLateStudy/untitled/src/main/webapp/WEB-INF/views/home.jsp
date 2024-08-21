@@ -19,21 +19,7 @@
                 <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
             </a>
         </div>
-
-        <div class="container">
-            <header class="d-flex justify-content-center py-3">
-                <ul class="nav nav-pills">
-                    <li class="nav-item"><a href="/home" class="nav-link active" aria-current="page">Home</a></li>
-                    <li class="nav-item"><a href="/home/study" class="nav-link">Study</a></li>
-                    <li class="nav-item"><a href="/home/memberList" class="nav-link">Member</a></li>
-                    <li class="nav-item"><a href="/home/about" class="nav-link">About</a></li>
-                </ul>
-                <div class="col-md-3 text-end">
-                    <button type="button" class="btn btn-outline-primary me-2"><a href="/member/login">Login</a></button>
-                    <button type="button" class="btn btn-primary"><a href="/member/signup">Sign-up</a></button>
-                </div>
-            </header>
-        </div>
+    <%@ include file="/WEB-INF/views/comm/header.jsp"%>
     </header>
 
     <div class="px-4 py-5 my-5 text-center">
@@ -48,13 +34,6 @@
         </div>
     </div>
 
-    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-        <p>&copy; 2024 Company, Inc. All rights reserved.</p>
-        <ul class="list-unstyled d-flex">
-            <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
-            <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
-            <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
-        </ul>
-    </div>
+<%@ include file="/WEB-INF/views/comm/footer.jsp"%>
 </body>
 </html>
