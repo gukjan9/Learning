@@ -1,6 +1,7 @@
 package com.example.untitled.controller;
 
 import com.example.untitled.service.StudyService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,7 @@ public class HomeController {
 
     @GetMapping("/study")
     @ResponseBody
-    public String goStudy(){
+    public String goStudy(HttpServletRequest request){
         List<Map<String, String>> list = new ArrayList<>();
         list = studyService.doStudyList();
 
@@ -34,7 +35,9 @@ public class HomeController {
             System.out.println(map.get("content"));
         }
 
-        return "list";
+        request.setAttribute("list", list);
+
+        return "/study";
     }
 
     @GetMapping("/memberList")

@@ -1,4 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%
+    List<Map<String, String>> list = (List<Map<String, String>>) request.getAttribute("list");
+%>
+
 <!doctype html>
 <html lang="ar" dir="ltr">
 <head>
@@ -25,19 +30,20 @@
 
     <div class="container text-center">
         <div class="row">
-            <div class="col">
-                No
-            </div>
-            <div class="col">
-                공부일자
-            </div>
-            <div class="col">
-                공부내용
-            </div>
-            <div class="col">
-                등록일자
-            </div>
+            <div class="col">Id</div>
+            <div class="col">공부일자</div>
+            <div class="col">공부내용</div>
+            <div class="col">등록일자</div>
         </div>
+
+        <% for(Map<String, String) map : list){ %>
+        <div class="row">
+                    <div class="col"><%= map.get("id") %>></div>
+                    <div class="col"><%= map.get("study_day") %></div>
+                    <div class="col"><%= map.get("content") %></div>
+                    <div class="col"><%= map.get("created_at") %></div>
+                </div>
+        <% } %>
     </div>
 
     <%@ include file="/WEB-INF/views/comm/footer.jsp"%>
