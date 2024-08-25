@@ -25,7 +25,6 @@ public class HomeController {
     }
 
     @GetMapping("/study")
-    @ResponseBody
     public String goStudy(HttpServletRequest request){
         List<Map<String, String>> list = new ArrayList<>();
         list = studyService.doStudyList();

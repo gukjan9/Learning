@@ -1,3 +1,6 @@
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.List" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
@@ -24,9 +27,9 @@
                 <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
             </a>
         </div>
-
-        <%@ include file="/WEB-INF/views/comm/header.jsp"%>
     </header>
+
+<%@ include file="/WEB-INF/views/comm/header.jsp"%>
 
     <div class="container text-center">
         <div class="row">
@@ -36,9 +39,9 @@
             <div class="col">등록일자</div>
         </div>
 
-        <% for(Map<String, String) map : list){ %>
+        <% for(Map<String, String> map : list){ %>
         <div class="row">
-                    <div class="col"><%= map.get("id") %>></div>
+                    <div class="col"><%= String.valueOf(map.get("id")) %></div>
                     <div class="col"><%= map.get("study_day") %></div>
                     <div class="col"><%= map.get("content") %></div>
                     <div class="col"><%= map.get("created_at") %></div>
