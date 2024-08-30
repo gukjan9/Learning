@@ -8,6 +8,7 @@ public class KafkaPrac1Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(KafkaPrac1Application.class, args);
+		// https://victorydntmd.tistory.com/348
 	}
 
 }
