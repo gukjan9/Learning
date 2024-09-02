@@ -115,13 +115,17 @@
             <div id="results-end" class="results"></div> <!-- 도착지 검색 결과 표시 영역 -->
         </div>
     </div>
-    <form action="/findRoute" method="post">
-        <button type="submit" class="btn">길찾기</button>
-    </form>
+    <button type="button" class="btn" onclick="calculateDistance()">길찾기</button>
     <div id="map"></div>
 </div>
 
 <script>
+    // 좌표 정보를 저장할 객체
+    let coordinates = {
+        start: null,
+        end: null
+    };
+
     // 장소 검색을 처리하는 함수
     function searchPlace(type) {
         const place = document.getElementById(type).value;
@@ -165,13 +169,59 @@
         return str.replace(/<[^>]*>/g, '');
     }
 
+    // X 좌표 (mapx)를 가공하는 함수 (134.xxx 형식으로 변환)
+    function formatMapx(coordinate) {
+        // 좌표 문자열에서 필요한 부분만 추출하여 가공
+        return `134.${coordinate.slice(3)}`;
+    }
+
+    // Y 좌표 (mapy)를 가공하는 함수 (36.xxxx 형식으로 변환)
+    function formatMapy(coordinate) {
+        // 좌표 문자열에서 필요한 부분만 추출하여 가공
+        return `36.${coordinate.slice(2)}`;
+    }
+
     // 사용자가 위치를 선택했을 때 실행되는 함수
     function selectLocation(item, type) {
         const cleanTitle = stripHtmlTags(item.title); // HTML 태그를 제거한 텍스트
         document.getElementById(type).value = cleanTitle;
-        alert(`${cleanTitle} 위치가 선택되었습니다.`);
+
+        // 좌표를 저장해둠
+        coordinates[type] = {
+            mapx: formatMapx(item.mapx),
+            mapy: formatMapy(item.mapy)
+        };
+
         // 선택 후 검색 결과를 지웁니다.
         document.getElementById(`results-${type}`).innerHTML = '';
+    }
+
+    // 출발지와 도착지의 거리를 계산하는 함수
+    function calculateDistance() {
+        if (!coordinates.start || !coordinates.end) {
+            alert('출발지와 도착지를 모두 선택하세요.');
+            return;
+        }
+
+        console.log('출발지 좌표:', coordinates.start);
+        console.log('도착지 좌표:', coordinates.end);
+
+        // 좌표 정보를 URL 파라미터로 전달하여 거리를 계산합니다.
+        const url = `/api/calcDistance?departureMapx=${coordinates.start.mapx}&departureMapy=${coordinates.start.mapy}&arrivalMapx=${coordinates.end.mapx}&arrivalMapy=${coordinates.end.mapy}`;
+
+        fetch(url, {
+            method: 'GET',
+        })
+            .then(response => response.json())
+            .then(data => {
+                // 전체 JSON 결과를 문자열로 변환하여 alert로 표시
+                console.log('전체 json : ', data);
+                alert(JSON.stringify(data, null, 2));
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('거리 계산 중 오류가 발생했습니다.');
+            });
     }
 </script>
 
