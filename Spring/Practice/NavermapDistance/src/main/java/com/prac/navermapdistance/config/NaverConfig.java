@@ -1,14 +1,16 @@
 package com.prac.navermapdistance.config;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
-@Component
+@Configuration
+@RequiredArgsConstructor
 public class NaverConfig {
 
     @Value("${naver.client.id}")
-    private String naverClientId;
+    private String clientId;
 
     @Value("${naver.client.secret}")
-    private String naverClientSecret;
+    private String clientSecret;
 }

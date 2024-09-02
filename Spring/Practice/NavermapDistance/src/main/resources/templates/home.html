@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>길찾기</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .search-box {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 48%;
+        }
+        label {
+            margin-right: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: calc(100% - 100px);
+            box-sizing: border-box;
+        }
+        .search-btn {
+            padding: 10px 15px;
+            margin-left: 10px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .search-btn:hover {
+            background-color: #1976D2;
+        }
+        #map {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>길찾기</h1>
+    <div class="search-box">
+        <div class="input-group">
+            <label for="start">출발지</label>
+            <input type="text" id="start" name="start" placeholder="출발지를 입력하세요">
+            <button type="button" class="search-btn" onclick="searchPlace('start')">검색</button>
+        </div>
+        <div class="input-group">
+            <label for="end">도착지</label>
+            <input type="text" id="end" name="end" placeholder="도착지를 입력하세요">
+            <button type="button" class="search-btn" onclick="searchPlace('end')">검색</button>
+        </div>
+    </div>
+    <form action="/findRoute" method="post">
+        <button type="submit" class="btn">길찾기</button>
+    </form>
+    <div id="map"></div>
+</div>
+
+<script>
+    // 서버에 각각의 장소에 대한 요청을 보냅니다.
+    function searchPlace(type) {
+        const place = document.getElementById(type).value;
+        if (!place) {
+            alert(type === 'start' ? '출발지를 입력하세요.' : '도착지를 입력하세요.');
+            return;
+        }
+
+        // AJAX 요청을 통해 각각의 장소 검색을 처리합니다.
+        fetch(`/api/searchPlace?place=${encodeURIComponent(place)}`, {
+            method: 'GET',
+        })
+            .then(response => response.text())
+            .then(data => {
+                // 서버로부터 받은 검색 결과를 처리하는 부분
+                alert(`검색 결과: ${data}`);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('검색 중 오류가 발생했습니다.');
+            });
+    }
+</script>
+
+</body>
+</html>
