@@ -25,12 +25,12 @@
         }
         .input-group {
             display: flex;
-            flex-direction: row;
-            align-items: center;
+            flex-direction: column;
             width: 48%;
+            position: relative;
         }
         label {
-            margin-right: 10px;
+            margin-bottom: 5px;
             font-weight: bold;
             color: #333;
         }
@@ -39,18 +39,18 @@
             font-size: 16px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            width: calc(100% - 100px);
             box-sizing: border-box;
         }
         .search-btn {
             padding: 10px 15px;
-            margin-left: 10px;
+            margin-top: 10px;
             background-color: #2196F3;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-size: 14px;
+            align-self: flex-start;
         }
         .search-btn:hover {
             background-color: #1976D2;
@@ -74,6 +74,27 @@
         .btn:hover {
             background-color: #45a049;
         }
+        .results {
+            position: absolute;
+            top: 90px;
+            left: 0;
+            right: 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+        .result-item {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+            background-color: #f9f9f9;
+        }
+        .result-item:hover {
+            background-color: #e0e0e0;
+        }
     </style>
 </head>
 <body>
@@ -85,11 +106,13 @@
             <label for="start">출발지</label>
             <input type="text" id="start" name="start" placeholder="출발지를 입력하세요">
             <button type="button" class="search-btn" onclick="searchPlace('start')">검색</button>
+            <div id="results-start" class="results"></div> <!-- 출발지 검색 결과 표시 영역 -->
         </div>
         <div class="input-group">
             <label for="end">도착지</label>
             <input type="text" id="end" name="end" placeholder="도착지를 입력하세요">
             <button type="button" class="search-btn" onclick="searchPlace('end')">검색</button>
+            <div id="results-end" class="results"></div> <!-- 도착지 검색 결과 표시 영역 -->
         </div>
     </div>
     <form action="/findRoute" method="post">
@@ -99,7 +122,7 @@
 </div>
 
 <script>
-    // 서버에 각각의 장소에 대한 요청을 보냅니다.
+    // 장소 검색을 처리하는 함수
     function searchPlace(type) {
         const place = document.getElementById(type).value;
         if (!place) {
@@ -111,15 +134,44 @@
         fetch(`/api/searchPlace?place=${encodeURIComponent(place)}`, {
             method: 'GET',
         })
-            .then(response => response.text())
+            .then(response => response.json())
             .then(data => {
                 // 서버로부터 받은 검색 결과를 처리하는 부분
-                alert(`검색 결과: ${data}`);
+                displayResults(data, type);
             })
             .catch(error => {
                 console.error('Error:', error);
                 alert('검색 중 오류가 발생했습니다.');
             });
+    }
+
+    // 검색 결과를 표시하는 함수
+    function displayResults(data, type) {
+        const resultsDiv = document.getElementById(`results-${type}`);
+        resultsDiv.innerHTML = ''; // 이전 결과 초기화
+
+        // 검색 결과가 있을 경우 리스트 형태로 보여줌
+        data.items.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'result-item';
+            div.innerText = `${stripHtmlTags(item.title)} - ${item.address}`;
+            div.onclick = () => selectLocation(item, type);
+            resultsDiv.appendChild(div);
+        });
+    }
+
+    // HTML 태그를 제거하는 함수
+    function stripHtmlTags(str) {
+        return str.replace(/<[^>]*>/g, '');
+    }
+
+    // 사용자가 위치를 선택했을 때 실행되는 함수
+    function selectLocation(item, type) {
+        const cleanTitle = stripHtmlTags(item.title); // HTML 태그를 제거한 텍스트
+        document.getElementById(type).value = cleanTitle;
+        alert(`${cleanTitle} 위치가 선택되었습니다.`);
+        // 선택 후 검색 결과를 지웁니다.
+        document.getElementById(`results-${type}`).innerHTML = '';
     }
 </script>
 
