@@ -49,3 +49,10 @@ public class DistanceController {
         return distanceService.calcDistance(coordinates1, coordinates2);
     }
 }
+
+// NCP Direction 15 docs
+// https://api.ncloud-docs.com/docs/ai-naver-mapsdirections15-driving#RequestPositionFormat
+// https://api.ncloud-docs.com/docs/ai-naver-mapsdirections15
+
+// 장소 검색 참고
+// https://velog.io/@cyseok123/Spring-%EB%84%A4%EC%9D%B4%EB%B2%84-%EC%A7%80%EC%97%AD-%EA%B2%80%EC%83%89-API-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
