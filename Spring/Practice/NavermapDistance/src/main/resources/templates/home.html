@@ -105,21 +105,41 @@
         <div class="input-group">
             <label for="start">출발지</label>
             <input type="text" id="start" name="start" placeholder="출발지를 입력하세요">
-            <button type="button" class="search-btn" onclick="searchPlace('start')">검색</button>
-            <div id="results-start" class="results"></div> <!-- 출발지 검색 결과 표시 영역 -->
+            <button type="button" id="start-btn" class="search-btn" onclick="searchPlace('start')">검색</button>
+            <div id="results-start" class="results"></div>
         </div>
         <div class="input-group">
             <label for="end">도착지</label>
             <input type="text" id="end" name="end" placeholder="도착지를 입력하세요">
-            <button type="button" class="search-btn" onclick="searchPlace('end')">검색</button>
-            <div id="results-end" class="results"></div> <!-- 도착지 검색 결과 표시 영역 -->
+            <button type="button" id="end-btn" class="search-btn" onclick="searchPlace('end')">검색</button>
+            <div id="results-end" class="results"></div>
         </div>
     </div>
     <button type="button" class="btn" onclick="calculateDistance()">길찾기</button>
+    <!-- JSON 결과를 표시할 영역 -->
+    <div id="jsonResult"></div>
     <div id="map"></div>
 </div>
 
 <script>
+    // 초기화 함수: 페이지가 로드될 때 실행
+    window.onload = function () {
+        // 출발지와 도착지 입력 필드에 keyup 이벤트 리스너 추가
+        document.getElementById('start').addEventListener('keyup', function (event) {
+            if (event.key === 'Enter') {
+                const startButton = document.getElementById('start-btn'); // 출발지 검색 버튼을 가져옴
+                if (startButton) startButton.click(); // 버튼이 존재하면 클릭
+            }
+        });
+
+        document.getElementById('end').addEventListener('keyup', function (event) {
+            if (event.key === 'Enter') {
+                const endButton = document.getElementById('end-btn'); // 도착지 검색 버튼을 가져옴
+                if (endButton) endButton.click(); // 버튼이 존재하면 클릭
+            }
+        });
+    };
+
     // 좌표 정보를 저장할 객체
     let coordinates = {
         start: null,
@@ -214,14 +234,69 @@
         })
             .then(response => response.json())
             .then(data => {
-                // 전체 JSON 결과를 문자열로 변환하여 alert로 표시
-                console.log('전체 json : ', data);
-                alert(JSON.stringify(data, null, 2));
+                // 필요한 필드만 추출하여 표시
+                displaySelectedFields(data);
             })
             .catch(error => {
                 console.error('Error:', error);
                 alert('거리 계산 중 오류가 발생했습니다.');
             });
+
+        // 필요한 필드를 추출하여 페이지에 표시하는 함수
+        function displaySelectedFields(data) {
+            // 필요한 데이터 추출
+            const message = data.message;
+            const currentDateTime = data.currentDateTime;
+            const distance = data.route.trafast[0].summary.distance;
+            const departureTime = formatDateTime(data.route.trafast[0].summary.departureTime);
+            const tollFare = data.route.trafast[0].summary.tollFare;
+            const taxiFare = data.route.trafast[0].summary.taxiFare;
+            const fuelPrice = data.route.trafast[0].summary.fuelPrice;
+            const duration = data.route.trafast[0].summary.duration; // 소요 시간 (밀리초 단위)
+
+            // 도착 시간 계산
+            const arrivalTime = formatDateTime(calculateArrivalTime(data.route.trafast[0].summary.departureTime, duration));
+
+            // 추출된 데이터를 페이지에 표시
+            const resultHtml = `
+        <h3>길찾기 결과</h3>
+        <p><strong>메시지:</strong> ${message}</p>
+        <p><strong>현재 시간:</strong> ${currentDateTime}</p>
+        <p><strong>거리:</strong> ${(distance / 1000).toFixed(2)} km</p>
+        <p><strong>출발 시간:</strong> ${departureTime}</p>
+        <p><strong>도착 시간:</strong> ${arrivalTime}</p>
+        <p><strong>통행료:</strong> ${tollFare.toLocaleString()} 원</p>
+        <p><strong>택시 요금:</strong> ${taxiFare.toLocaleString()} 원</p>
+        <p><strong>연료 비용:</strong> ${fuelPrice.toLocaleString()} 원</p>
+    `;
+
+            // 결과를 표시할 위치에 삽입
+            document.getElementById('jsonResult').innerHTML = resultHtml;
+        }
+
+        // 도착 시간을 계산하는 함수
+        function calculateArrivalTime(departureTime, duration) {
+            // 출발 시간을 UTC로 변환하고 밀리초를 더한 후 로컬 시간대로 변환
+            const departureDate = new Date(departureTime);
+            const arrivalDate = new Date(departureDate.getTime() + duration);
+
+            // 도착 시간을 수동으로 'YYYY-MM-DD HH:MM:SS' 형식으로 변환
+            const year = arrivalDate.getFullYear();
+            const month = String(arrivalDate.getMonth() + 1).padStart(2, '0');
+            const day = String(arrivalDate.getDate()).padStart(2, '0');
+            const hours = String(arrivalDate.getHours()).padStart(2, '0');
+            const minutes = String(arrivalDate.getMinutes()).padStart(2, '0');
+            const seconds = String(arrivalDate.getSeconds()).padStart(2, '0');
+
+            // 포맷된 도착 시간 문자열 반환
+            return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        }
+
+        // 날짜와 시간을 지정된 형식으로 변환하는 함수
+        function formatDateTime(dateTimeString) {
+            // 'YYYY-MM-DDTHH:MM:SS' 형식을 'YYYY-MM-DD HH:MM:SS' 형식으로 변환
+            return dateTimeString.replace('T', ' ').split('.')[0];
+        }
     }
 </script>
 
