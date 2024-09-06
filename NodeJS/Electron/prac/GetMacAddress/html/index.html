@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electron Tray App</title>
+</head>
+<body>
+  <h1>트레이 클릭 로그</h1>
+  <div id="log"></div>
+
+  <script>
+    const logDiv = document.getElementById('log');
+
+    // 트레이 클릭 시 로그를 화면에 출력
+    window.electronAPI.onTrayClick((message) => {
+      const logItem = document.createElement('p');
+      logItem.textContent = message;
+      logDiv.appendChild(logItem);
+    });
+  </script>
+</body>
+</html>
