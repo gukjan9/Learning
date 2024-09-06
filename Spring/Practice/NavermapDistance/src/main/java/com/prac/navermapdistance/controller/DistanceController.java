@@ -41,7 +41,7 @@ public class DistanceController {
         return distanceService.calcDistance(departureCoordinates, arrivalCoordinates);
     }
 
-    @GetMapping("/calcDistance1")
+    @GetMapping("/calcDistanceTest")
     public ResponseEntity<String> getFixedLocation() {
         // 좌표를 문자열 형식으로 반환
         String coordinates1 = "126.9783881,37.5666103"; // 서울 시청 근처 좌표
