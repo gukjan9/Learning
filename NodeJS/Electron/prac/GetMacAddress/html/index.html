@@ -4,20 +4,22 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Electron Tray App</title>
+  <title>What is my Mac Address?</title>
 </head>
 <body>
-  <h1>트레이 클릭 로그</h1>
+  <h1>내 맥 주소는?</h1>
   <div id="log"></div>
 
   <script>
     const logDiv = document.getElementById('log');
 
-    // 트레이 클릭 시 로그를 화면에 출력
     window.electronAPI.onTrayClick((message) => {
-      const logItem = document.createElement('p');
-      logItem.textContent = message;
-      logDiv.appendChild(logItem);
+      // logDiv.innerHTML = ''; // 이전 로그를 초기화
+      message.forEach(mac => {
+        const logItem = document.createElement('p');
+        logItem.textContent = mac;
+        logDiv.appendChild(logItem);
+      });
     });
   </script>
 </body>

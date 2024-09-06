@@ -5,31 +5,28 @@ const path = require('path');
 let tray;
 let mainWindow;
 
-//트레이 아이콘
+// 트레이
 function initTrayIconMenu(){
   tray = new Tray('C:/Users/gukjang/GukJang/image/star.png'); 
   const myMenu = Menu.buildFromTemplate([
     {
-      label: 'Get Mac Address!', type: 'normal', checked: true,
+      label: '맥 어드레스 내놔!', type: 'normal', checked: true,
       click: () => {
         getMacAddress();
       },
     },
   ])
-  tray.setToolTip('트레이 아이콘!')
+  tray.setToolTip('Get Mac Address!')
   tray.setContextMenu(myMenu)
 }
 
 function getMacAddress(){
-    Object.keys(macAddr).forEach((k) => {
-        macAddr[k].forEach((v) => {
-          console.log(v['mac']);
-          mainWindow.webContents.send('tray-click', JSON.stringify(macAddr, null, 2));
-        });
-      });
+    // MAC 주소만 추출
+  const ethernetMac = macAddr["이더넷"].map((item) => item.mac).filter((value, index, self) => self.indexOf(value) === index);
+  mainWindow.webContents.send('tray-click', ethernetMac);
 }
 
-// 브라우저 창을 생성하는 함수
+// 브라우저
 function createWindow() {  
   mainWindow = new BrowserWindow({
     width: 800,
