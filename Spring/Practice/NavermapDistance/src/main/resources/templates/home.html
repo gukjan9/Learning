@@ -57,7 +57,7 @@
         }
         #map {
             width: 100%;
-            height: 600px;
+            height: 400px;
             border: 1px solid #ddd;
             border-radius: 5px;
         }
@@ -96,6 +96,8 @@
             background-color: #e0e0e0;
         }
     </style>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=4e8xer7cxt"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -116,14 +118,32 @@
         </div>
     </div>
     <button type="button" class="btn" onclick="calculateDistance()">길찾기</button>
-    <!-- JSON 결과를 표시할 영역 -->
-    <div id="jsonResult"></div>
     <div id="map"></div>
+    <div id="jsonResult"></div>
 </div>
 
 <script>
-    // 초기화 함수: 페이지가 로드될 때 실행
+    let map;
+
+    // 출발지와 도착지 마커를 저장할 객체
+    let markers = {
+        start: null,
+        end: null,
+    };
+
+    // 지도 초기화 함수
+    function initMap() {
+        // 전역 변수 map에 새로운 네이버 지도 객체를 할당
+        map = new naver.maps.Map('map', {
+            center: new naver.maps.LatLng(37.5665, 126.9780), // 초기 중심 좌표 설정
+            zoom: 15 // 초기 줌 레벨 설정
+        });
+    }
+
+    // 페이지가 로드될 때 지도 초기화와 이벤트 리스너 설정
     window.onload = function () {
+        initMap(); // 지도 초기화 함수 호출
+
         // 출발지와 도착지 입력 필드에 keyup 이벤트 리스너 추가
         document.getElementById('start').addEventListener('keyup', function (event) {
             if (event.key === 'Enter') {
@@ -191,13 +211,11 @@
 
     // X 좌표 (mapx)를 가공하는 함수 (134.xxx 형식으로 변환)
     function formatMapx(coordinate) {
-        // 좌표 문자열에서 필요한 부분만 추출하여 가공
         return `134.${coordinate.slice(3)}`;
     }
 
     // Y 좌표 (mapy)를 가공하는 함수 (36.xxxx 형식으로 변환)
     function formatMapy(coordinate) {
-        // 좌표 문자열에서 필요한 부분만 추출하여 가공
         return `36.${coordinate.slice(2)}`;
     }
 
@@ -206,13 +224,31 @@
         const cleanTitle = stripHtmlTags(item.title); // HTML 태그를 제거한 텍스트
         document.getElementById(type).value = cleanTitle;
 
-        // 좌표를 저장해둠
+        // 좌표를 저장
         coordinates[type] = {
-            mapx: formatMapx(item.mapx),
-            mapy: formatMapy(item.mapy)
+            mapx: parseFloat(formatMapx(item.mapx)),
+            mapy: parseFloat(formatMapy(item.mapy))
         };
 
-        // 선택 후 검색 결과를 지웁니다.
+        // 선택한 좌표를 Naver의 LatLng 객체로 변환
+        const position = new naver.maps.LatLng(coordinates[type].mapy, coordinates[type].mapx);
+
+        // 기존 마커 제거
+        if (markers[type]) {
+            markers[type].setMap(null);
+        }
+
+        // 새 마커 생성 및 지도에 추가
+        markers[type] = new naver.maps.Marker({
+            position: position,
+            map: map,
+            title: cleanTitle,
+        });
+
+        // 선택한 위치로 지도의 중심을 이동
+        map.setCenter(position);
+
+        // 검색 결과 초기화
         document.getElementById(`results-${type}`).innerHTML = '';
     }
 
@@ -299,6 +335,5 @@
         }
     }
 </script>
-
 </body>
 </html>
