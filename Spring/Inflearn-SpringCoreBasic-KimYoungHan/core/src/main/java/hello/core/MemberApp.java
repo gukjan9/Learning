@@ -15,6 +15,7 @@ public class MemberApp {
         // AppConfig appConfig = new AppConfig();
         // MemberService memberService = appConfig.memberService();
 
+        // Annotation 으로 설정된 객체를 Spring Container 에 다 넣음
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
         MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
 
