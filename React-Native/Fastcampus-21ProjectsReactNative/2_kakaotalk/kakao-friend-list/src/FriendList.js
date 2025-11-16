@@ -5,7 +5,7 @@ import Margin from "./Margin";
 const bottomSpace = getBottomSpace();
 
 export default (props) => {
-    return (
+    return props.isOpened ? (
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: bottomSpace }}>
             {props.data.map((item, index) => (
                 <View key={index}>
@@ -19,5 +19,5 @@ export default (props) => {
 
             ))}
         </ScrollView>
-    )
+    ) : null
 }

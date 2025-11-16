@@ -7,11 +7,18 @@ import Profile from "../src/Profile";
 import Division from "../src/Division";
 import Margin from "../src/Margin";
 import FriendSection from "../src/FriendSection";
+import FriendList from "../src/FriendList";
 
 const statusBarHeight = getStatusBarHeight(true);
 const bottomSpace = getBottomSpace();
 
 export default function App() {
+    const [isOpened, setIsOpened] = useState(true);
+
+    const onPressArrow = () => {
+        setIsOpened = !isOpened;
+    }
+
     return (
         <View style={styles.container}>
             <Header />
@@ -26,7 +33,10 @@ export default function App() {
             <Margin height={12} />
             <FriendSection
                 friendProfileLen={freindProfiles.length}
-                onPressArrow={onPressArrow} />
+                onPressArrow={onPressArrow}
+                isOpened={isOpened} />
+
+            <FriendList data={freindProfiles} isOpened={isOpened} />
 
         </View>
     );
